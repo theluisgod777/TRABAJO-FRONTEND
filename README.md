@@ -66,7 +66,7 @@ Su objetivo es representar cómo podría funcionar un **sistema administrativo d
 4. ¡Listo! Podrás explorar la interfaz y las funcionalidades simuladas del sistema.
 
 **o tambien** simplemente entra a este link para visualizar el trabajo
-**[Repositorio del proyecto](trabajofrontendlui.netlify.app)**
+**[Repositorio del proyecto](https://trabajofrontendlui.netlify.app/)**
 
 ---
 
