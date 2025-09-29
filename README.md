@@ -65,6 +65,9 @@ Su objetivo es representar cómo podría funcionar un **sistema administrativo d
 3. **Abre el archivo `index.html`** en tu navegador favorito (Chrome, Edge, Firefox, etc.).  
 4. ¡Listo! Podrás explorar la interfaz y las funcionalidades simuladas del sistema.
 
+**o tambien** simplemente entra a este link para visualizar el trabajo
+**[Repositorio del proyecto](trabajofrontendlui.netlify.app)**
+
 ---
 
 ## Notas adicionales
