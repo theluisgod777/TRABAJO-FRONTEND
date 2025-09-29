@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIPUX - Administración de estudiantes</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Aquí arriba va el encabezado con el logo y la info del usuario -->
+    <header class="encabezado">
+        <div class="contenedor-logo">
+            <img src="assets/img/logo.png" alt="QUIPUX Logo" class="logo">
+        </div>
+        <div class="info-usuario">
+            <span class="nombre-usuario">Luis Alberto Valencia Causil</span>
+            <div class="foto-perfil">
+                <img src="assets/img/perfil.jfif" alt="Foto de perfil" class="imagen-perfil" id="imagenPerfil">
+            </div>
+        </div>
+         <!-- Termina el encabezado -->
+    </header>
+
+    <div class="contenedor-principal">
+        <!-- Este es el menú de la izquierda con las secciones principales -->
+        <nav class="barra-lateral">
+            <ul class="menu-navegacion">
+                <li class="elemento-menu activo" data-seccion="estudiantes">
+                    <a href="#" class="enlace-menu">Estudiantes</a>
+                </li>
+                <li class="elemento-menu" data-seccion="grupos">
+                    <a href="#" class="enlace-menu">Grupos</a>
+                </li>
+                <li class="elemento-menu" data-seccion="materias">
+                    <a href="#" class="enlace-menu">Materias</a>
+                </li>
+                <li class="elemento-menu" data-seccion="evaluaciones">
+                    <a href="#" class="enlace-menu">Evaluaciones</a>
+                </li>
+                <li class="elemento-menu" data-seccion="informes">
+                    <a href="#" class="enlace-menu">Informes</a>
+                </li>
+            </ul>
+        </nav>
+         <!-- Termina la barra lateral -->
+
+        <main class="contenido-principal">
+             <!-- Sección donde se administran los estudiantes -->
+            <section id="seccion-estudiantes" class="seccion-contenido activa">
+                <div class="encabezado-seccion">
+                    <h1 class="titulo-seccion">Administración de estudiantes</h1>
+                    <button class="boton-nuevo-registro" id="botonNuevoRegistro">
+                        <span class="icono-mas">+</span> Nuevo registro
+                    </button>
+                </div>
+
+                <!-- Filtros para buscar estudiantes más rápido -->
+                <div class="contenedor-filtros">
+                    <div class="grupo-filtro">
+                        <label for="filtroGrado">Grado</label>
+                        <select id="filtroGrado" class="selector-filtro">
+                            <option value="">Seleccionar</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                        </select>
+                    </div>
+                    <div class="grupo-filtro">
+                        <label for="filtroGrupo">Grupo</label>
+                        <select id="filtroGrupo" class="selector-filtro">
+                            <option value="">Seleccionar</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                    </div>
+                    <div class="grupo-filtro">
+                        <label for="filtroIdentificacion">Identificación</label>
+                        <input type="text" id="filtroIdentificacion" class="campo-filtro" placeholder="Número documento">
+                    </div>
+                    <div class="grupo-filtro">
+                        <label for="filtroEstudiante">Estudiante</label>
+                        <select id="filtroEstudiante" class="selector-filtro">
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="botones-filtro">
+                        <button class="boton-buscar" id="botonBuscar">Buscar</button>
+                        <button class="boton-limpiar" id="botonLimpiar">Limpiar filtros</button>
+                    </div>
+                </div>
+
+                <!-- Tabla donde aparecen los resultados de la búsqueda -->
+                <div class="contenedor-resultados">
+                    <div class="encabezado-resultados">
+                        <h2 class="titulo-resultados">Resultados</h2>
+                        <div class="controles-tabla">
+                            <span class="texto-mostrar">Mostrar</span>
+                            <select class="selector-mostrar">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="contenedor-tabla">
+                        <table class="tabla-estudiantes">
+                            <thead>
+                                <tr>
+                                    <th class="encabezado-tabla">Código <span class="icono-ordenar">↕</span></th>
+                                    <th class="encabezado-tabla">Identificación <span class="icono-ordenar">↕</span></th>
+                                    <th class="encabezado-tabla">Estudiante <span class="icono-ordenar">↕</span></th>
+                                    <th class="encabezado-tabla">Grado <span class="icono-ordenar">↕</span></th>
+                                    <th class="encabezado-tabla">Grupo <span class="icono-ordenar">↕</span></th>
+                                    <th class="encabezado-tabla">Estado <span class="icono-ordenar">↕</span></th>
+                                    <th class="encabezado-tabla">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpoTablaEstudiantes">
+                                <tr>
+                                    <td>2022101</td>
+                                    <td>1110881234456</td>
+                                    <td>Camila Fernández Rojas</td>
+                                    <td>10</td>
+                                    <td>A</td>
+                                    <td><span class="estado en-curso">En curso</span></td>
+                                    <td class="acciones">
+                                        <button class="boton-accion ver" title="Ver">👁</button>
+                                        <button class="boton-accion eliminar" title="Eliminar">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2022102</td>
+                                    <td>1110881234499</td>
+                                    <td>Juan Felipe Montoya Ríos</td>
+                                    <td>10</td>
+                                    <td>A</td>
+                                    <td><span class="estado aprobado">Aprobado</span></td>
+                                    <td class="acciones">
+                                        <button class="boton-accion ver" title="Ver">👁</button>
+                                        <button class="boton-accion eliminar" title="Eliminar">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2022103</td>
+                                    <td>CC 1058456789</td>
+                                    <td>Luisa María Cruz Hernández</td>
+                                    <td>10</td>
+                                    <td>B</td>
+                                    <td><span class="estado reprobado">Reprobado</span></td>
+                                    <td class="acciones">
+                                        <button class="boton-accion ver" title="Ver">👁</button>
+                                        <button class="boton-accion eliminar" title="Eliminar">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2022104</td>
+                                    <td>1110881200099</td>
+                                    <td>Ana María Bedoya López</td>
+                                    <td>10</td>
+                                    <td>B</td>
+                                    <td><span class="estado en-curso">En curso</span></td>
+                                    <td class="acciones">
+                                        <button class="boton-accion ver" title="Ver">👁</button>
+                                        <button class="boton-accion eliminar" title="Eliminar">🗑</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2022105</td>
+                                    <td>1110870134499</td>
+                                    <td>Santiago Sánchez Rivera</td>
+                                    <td>10</td>
+                                    <td>A</td>
+                                    <td><span class="estado en-curso">En curso</span></td>
+                                    <td class="acciones">
+                                        <button class="boton-accion ver" title="Ver">👁</button>
+                                        <button class="boton-accion eliminar" title="Eliminar">🗑</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="paginacion">
+                        <span class="info-paginacion">Mostrando 1 al 5 de 150 registros</span>
+                        <div class="controles-paginacion">
+                            <span class="texto-primero">Primero</span>
+                            <button class="boton-pagina activo">1</button>
+                            <button class="boton-pagina">2</button>
+                            <button class="boton-pagina">3</button>
+                            <button class="boton-pagina">4</button>
+                            <button class="boton-pagina">5</button>
+                            <span class="texto-ultimo">Último</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aquí se muestra la información de un estudiante en detalle -->
+            <section id="seccion-info-estudiante" class="seccion-contenido">
+                <div class="ruta-navegacion">
+                    <a href="#" class="enlace-ruta" id="volverEstudiantes">Administración de estudiantes</a>
+                    <span class="separador-ruta">/</span>
+                    <span class="ruta-actual">Estudiante</span>
+                </div>
+
+                <div class="contenedor-formulario">
+                    <h2 class="titulo-formulario">Información del estudiante</h2>
+                    
+                    <!--ESTRUCTURA DEL FORMULARIO -->
+                    <div class="formulario-estudiante">
+                        <!-- Primera fila -->
+                        <div class="fila-formulario">
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Código</label>
+                                <input type="text" id="codigoEstudiante" class="campo-entrada" value="2022101" readonly>
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Identificación</label>
+                                <select id="tipoIdentificacion" class="selector-campo">
+                                    <option value="TI">TI</option>
+                                    <option value="CC">CC</option>
+                                </select>
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Número documento</label>
+                                <input type="text" id="numeroDocumento" class="campo-entrada" placeholder="Número documento">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Primer nombre</label>
+                                <input type="text" id="primerNombre" class="campo-entrada" placeholder="Ingrese el primer nombre">
+                            </div>
+                        </div>
+
+                        <!-- Segunda fila -->
+                        <div class="fila-formulario">
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Segundo nombre (Opcional)</label>
+                                <input type="text" id="segundoNombre" class="campo-entrada" placeholder="Ingrese el segundo nombre">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Primer apellido</label>
+                                <input type="text" id="primerApellido" class="campo-entrada" placeholder="Ingrese el primer apellido">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Segundo apellido</label>
+                                <input type="text" id="segundoApellido" class="campo-entrada" placeholder="Ingrese el segundo apellido">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Sexo</label>
+                                <div class="grupo-radio">
+                                    <label class="etiqueta-radio">
+                                        <input type="radio" name="sexo" value="femenino" checked>
+                                        <span class="texto-radio">Femenino</span>
+                                    </label>
+                                    <label class="etiqueta-radio">
+                                        <input type="radio" name="sexo" value="masculino">
+                                        <span class="texto-radio">Masculino</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tercera fila -->
+                        <div class="fila-formulario">
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Fecha de nacimiento</label>
+                                <input type="date" id="fechaNacimiento" class="campo-entrada">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Teléfono residencia (Opcional)</label>
+                                <input type="tel" id="telefonoResidencia" class="campo-entrada" placeholder="Ingrese el número">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Celular</label>
+                                <input type="tel" id="celular" class="campo-entrada" placeholder="Ingrese el número">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Correo electrónico</label>
+                                <input type="email" id="correoElectronico" class="campo-entrada" placeholder="Ej. prueba@correo.com">
+                            </div>
+                        </div>
+
+                        <!-- Cuarta fila -->
+                        <div class="fila-formulario">
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Ciudad de residencia</label>
+                                <select id="ciudadResidencia" class="selector-campo">
+                                    <option value="">Seleccionar</option>
+                                    <option value="bogota">Bogotá</option>
+                                    <option value="medellin">Medellín</option>
+                                    <option value="cali">Cali</option>
+                                </select>
+                            </div>
+                            <div class="campo-formulario campo-doble">
+                                <label class="etiqueta-campo">Dirección de residencia</label>
+                                <input type="text" id="direccionResidencia" class="campo-entrada" placeholder="Ej. Carrera 12 #45-78 Piso 2">
+                            </div>
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Grado</label>
+                                <select id="gradoEstudiante" class="selector-campo">
+                                    <option value="">Seleccionar</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Quinta fila -->
+                        <div class="fila-formulario">
+                            <div class="campo-formulario">
+                                <label class="etiqueta-campo">Grupo</label>
+                                <select id="grupoEstudiante" class="selector-campo">
+                                    <option value="">Seleccionar</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla con los cursos que el estudiante ha hecho -->
+                    <div class="seccion-cursos">
+                        <div class="encabezado-cursos">
+                            <h3 class="titulo-cursos">Cursos realizados</h3>
+                            <div class="controles-cursos">
+                                <span class="texto-mostrar">Mostrar</span>
+                                <select class="selector-mostrar">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </div>
+                        </div>
+                            
+                        <div class="contenedor-tabla">
+                            <table class="tabla-cursos">
+                                <thead>
+                                    <tr>
+                                        <th class="encabezado-tabla">Código <span class="icono-ordenar">↕</span></th>
+                                        <th class="encabezado-tabla">Año <span class="icono-ordenar">↕</span></th>
+                                        <th class="encabezado-tabla">Grado <span class="icono-ordenar">↕</span></th>
+                                        <th class="encabezado-tabla">Grupo <span class="icono-ordenar">↕</span></th>
+                                        <th class="encabezado-tabla">Estado <span class="icono-ordenar">↕</span></th>
+                                        <th class="encabezado-tabla">Nota promedio <span class="icono-ordenar">↕</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2022101</td>
+                                        <td>2022</td>
+                                        <td>10</td>
+                                        <td>A</td>
+                                        <td>
+                                            <select class="selector-estado">
+                                                <option value="en-curso" selected>En curso</option>
+                                                <option value="aprobado">Aprobado</option>
+                                                <option value="reprobado">Reprobado</option>
+                                            </select>
+                                        </td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021102</td>
+                                        <td>2021</td>
+                                        <td>9</td>
+                                        <td>C</td>
+                                        <td>
+                                            <select class="selector-estado">
+                                                <option value="en-curso">En curso</option>
+                                                <option value="aprobado" selected>Aprobado</option>
+                                                <option value="reprobado">Reprobado</option>
+                                            </select>
+                                        </td>
+                                        <td>4.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2020103</td>
+                                        <td>2020</td>
+                                        <td>9</td>
+                                        <td>B</td>
+                                        <td>
+                                            <select class="selector-estado">
+                                                <option value="en-curso">En curso</option>
+                                                <option value="aprobado">Aprobado</option>
+                                                <option value="reprobado" selected>Reprobado</option>
+                                            </select>
+                                        </td>
+                                        <td>2.4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2019104</td>
+                                        <td>2019</td>
+                                        <td>8</td>
+                                        <td>B</td>
+                                        <td>
+                                            <select class="selector-estado">
+                                                <option value="en-curso">En curso</option>
+                                                <option value="aprobado" selected>Aprobado</option>
+                                                <option value="reprobado">Reprobado</option>
+                                            </select>
+                                        </td>
+                                        <td>3.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2018105</td>
+                                        <td>2018</td>
+                                        <td>7</td>
+                                        <td>A</td>
+                                        <td>
+                                            <select class="selector-estado">
+                                                <option value="en-curso">En curso</option>
+                                                <option value="aprobado" selected>Aprobado</option>
+                                                <option value="reprobado">Reprobado</option>
+                                            </select>
+                                        </td>
+                                        <td>3.8</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="paginacion">
+                            <span class="info-paginacion">Mostrando 1 al 5 de 10 registros</span>
+                            <div class="controles-paginacion">
+                                <span class="texto-primero">Primero</span>
+                                <button class="boton-pagina activo">1</button>
+                                <button class="boton-pagina">2</button>
+                                <button class="boton-pagina">3</button>
+                                <button class="boton-pagina">4</button>
+                                <button class="boton-pagina">5</button>
+                                <span class="texto-ultimo">Último</span>
+                            </div>
+                        </div>
+                        
+                        <div class="botones-formulario">
+                            <button class="boton-cancelar-formulario" id="botonCancelarFormulario">Cancelar</button>
+                            <button class="boton-guardar-formulario" id="botonGuardarFormulario">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Otras secciones del sistema (grupos, materias, evaluaciones, informes) -->
+            <section id="seccion-grupos" class="seccion-contenido">
+                <h1 class="titulo-seccion">Administración de Grupos</h1>
+                <p class="mensaje-seccion">Funcionalidad de grupos en desarrollo...</p>
+                <div class="contenedor-imagen-desarrollo">
+                    <img src="assets/img/xd.jpg" alt="Imagen de grupos" class="imagen-desarrollo">
+                    <p class="texto-imagen">Imagen representativa de la funcionalidad de grupos</p>
+                </div>
+            </section>
+
+            <section id="seccion-materias" class="seccion-contenido">
+                <h1 class="titulo-seccion">Administración de Materias</h1>
+                <p class="mensaje-seccion">Funcionalidad de materias en desarrollo...</p>
+                <div class="contenedor-imagen-desarrollo">
+                    <img src="assets/img/xd.jpg" alt="Imagen de materias" class="imagen-desarrollo">
+                    <p class="texto-imagen">Imagen representativa de la funcionalidad de materias</p>
+                </div>
+            </section>
+
+            <section id="seccion-evaluaciones" class="seccion-contenido">
+                <h1 class="titulo-seccion">Administración de Evaluaciones</h1>
+                <p class="mensaje-seccion">Funcionalidad de evaluaciones en desarrollo...</p>
+                <div class="contenedor-imagen-desarrollo">
+                    <img src="assets/img/xd.jpg" alt="Imagen de evaluaciones" class="imagen-desarrollo">
+                    <p class="texto-imagen">Imagen representativa de la funcionalidad de evaluaciones</p>
+                </div>
+            </section>
+
+            <section id="seccion-informes" class="seccion-contenido">
+                <h1 class="titulo-seccion">Informes</h1>
+                <p class="mensaje-seccion">Funcionalidad de informes en desarrollo...</p>
+                <div class="contenedor-imagen-desarrollo">
+                    <img src="assets/img/xd.jpg" alt="Imagen de informes" class="imagen-desarrollo">
+                    <p class="texto-imagen">Imagen representativa de la funcionalidad de informes</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Ventana emergente para confirmar si se elimina un estudiante -->
+    <div id="ventanaEliminar" class="ventana-fondo">
+        <div class="ventana-contenido">
+            <div class="ventana-encabezado">
+                <h3 class="ventana-titulo">Eliminar [nombre_estudiante]</h3>
+                <button class="boton-cerrar-ventana" id="cerrarVentana">&times;</button>
+            </div>
+            <div class="ventana-cuerpo">
+                <p class="mensaje-confirmacion">¿Estás seguro que deseas eliminar el registro de estudiante?</p>
+            </div>
+            <div class="ventana-pie">
+                <button class="boton-cancelar" id="botonCancelar">No</button>
+                <button class="boton-confirmar" id="botonConfirmar">Sí, eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ventana emergente para ver la foto de perfil en grande -->
+    <div id="ventanaImagenPerfil" class="ventana-imagen-fondo">
+        <div class="ventana-imagen-contenido">
+            <button class="boton-cerrar-imagen" id="cerrarVentanaImagen">&times;</button>
+            <img src="/placeholder.svg" alt="Imagen de perfil ampliada" class="imagen-perfil-ampliada" id="imagenPerfilAmpliada">
+            <div class="info-imagen-perfil">
+                <h3 class="nombre-usuario-ventana">Luis Alberto Valencia Causil</h3>
+                <p class="texto-imagen-perfil">Foto de perfil</p>
+            </div>
+        </div>
+    </div>
+        <!-- Aquí terminan todos los elementos visibles de la página -->
+
+    <script src="js/funcionalidad.js"></script>
+</body>
+</html>
