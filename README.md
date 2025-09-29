@@ -1,11 +1,11 @@
-# 📚 Sistema de Administración de Estudiantes - QUIPUX
+# 📚 Project
 
 > 💻 Proyecto realizado como tarea para el **Semillero de Quipux**  
 > 🧑 Desarrollado por **Luis Alberto Valencia Causil**
 
 ---
 
-# 📚 Sistema de Gestión de Estudiantes QUIPUX
+# 📚 Sistema de Administración de Estudiantes QUIPUX
 
 Un sistema web completo para la administración y gestión de estudiantes, desarrollado con HTML5, CSS3 y JavaScript vanilla. Diseñado con una interfaz moderna y funcional que permite gestionar información académica de manera eficiente.
 
