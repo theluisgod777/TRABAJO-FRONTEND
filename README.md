@@ -1,4 +1,4 @@
-# 📚 Project
+# 📚 TRABAJO FRONTEND
 
 > 💻 Proyecto realizado como tarea para el **Semillero de Quipux**  
 > 🧑 Desarrollado por **Luis Alberto Valencia Causil**
